@@ -1,4 +1,5 @@
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import LastFiveDays from './components/LastFiveDays/LastFiveDays';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <div className="main-container">
         Weather grabber
         <CurrentWeather weatherData={weatherData}/>
+        <LastFiveDays />
       </div>
     </div>
   );
