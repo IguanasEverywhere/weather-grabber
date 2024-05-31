@@ -9,6 +9,7 @@ function App() {
   // .then(data => console.log(data))
 
   // add more to this later for prev 5 days
+
   const [weatherData, setWeatherData] = useState({
     currentTime: null,
     currentTemp: null,
@@ -16,6 +17,7 @@ function App() {
   });
 
   useEffect(() => {
+    console.log("fetching...")
     fetch('https://api.open-meteo.com/v1/gfs?latitude=52.52&longitude=13.41&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago&past_days=5&forecast_days=1')
       .then(r => r.json())
       .then(currentData => setWeatherData({
@@ -25,13 +27,14 @@ function App() {
       }))
   }, [])
 
-  console.log(weatherData) // pass this to CurrentWeather component
+
+
 
   return (
     <div className="App">
       <div className="main-container">
         Weather grabber
-        <CurrentWeather />
+        <CurrentWeather weatherData={weatherData}/>
       </div>
     </div>
   );
