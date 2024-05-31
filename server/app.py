@@ -16,6 +16,7 @@ CORS(app)
 
 
 class Weather(db.Model):
+    __tablename__ = "weather"
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Integer, nullable=False)
     weather_code = db.Column(db.Integer, nullable=False)
@@ -25,9 +26,19 @@ class Weather(db.Model):
     def __repr__(self):
         return f'<Weather {self.id, self.temperature}>'
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "temperature": self.temperature,
+            "weather_code": self.weather_code,
+            "timestamp": self.timestamp
+        }
+
     @app.route('/api/saved-weather-data', methods=['GET'])
-    def get_weather_data():
-        return{'test':'content'}
+    def get_saved_weather_data():
+        query_result = Weather.query.limit(5).all()
+        last_five_reports = [report.to_dict() for report in query_result]
+        return last_five_reports
 
 
 if __name__ == '__main__':
