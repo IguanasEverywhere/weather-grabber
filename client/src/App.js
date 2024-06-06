@@ -1,4 +1,5 @@
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import LastFiveDays from './components/LastFiveDays/LastFiveDays';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -9,29 +10,40 @@ function App() {
   // .then(data => console.log(data))
 
   // add more to this later for prev 5 days
+
   const [weatherData, setWeatherData] = useState({
     currentTime: null,
     currentTemp: null,
-    currentWeatherCode: null
+    currentWeatherCode: null,
+    daily: {}
   });
 
   useEffect(() => {
-    fetch('https://api.open-meteo.com/v1/gfs?latitude=52.52&longitude=13.41&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago&past_days=5&forecast_days=1')
+    console.log("fetching...")
+    fetch('https://api.open-meteo.com/v1/gfs?latitude=52.52&longitude=13.41&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago&past_days=4&forecast_days=1')
       .then(r => r.json())
-      .then(currentData => setWeatherData({
-        currentTime: currentData.current.time,
-        currentTemp: currentData.current.temperature_2m,
-        currentWeatherCode: currentData.current.weather_code
-      }))
+      .then(currentData => {
+        //console.log(currentData)
+        setWeatherData({
+          currentTime: currentData.current.time,
+          currentTemp: currentData.current.temperature_2m,
+          currentWeatherCode: currentData.current.weather_code,
+          daily: currentData.daily
+        })
+      })
   }, [])
 
-  console.log(weatherData) // pass this to CurrentWeather component
+  // console.log(weatherData)
+
+
+
 
   return (
     <div className="App">
       <div className="main-container">
         Weather grabber
-        <CurrentWeather />
+        <CurrentWeather weatherData={weatherData} />
+        <LastFiveDays daily={weatherData.daily} />
       </div>
     </div>
   );

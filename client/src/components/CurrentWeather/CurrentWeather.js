@@ -1,9 +1,14 @@
+import styles from './CurrentWeather.module.css';
 
-
-const CurrentWeather = () => {
+const CurrentWeather = ({weatherData}) => {
 
   return (
-    <p>Current Weather</p>
+    <div className={styles.containerCard}>
+      <p>Current Weather</p>
+      <p>{weatherData.currentTime}</p>
+      <p>{weatherData.currentTemp}</p>
+      <p>{weatherData.currentWeatherCode}</p>
+    </div>
   )
 }
 
