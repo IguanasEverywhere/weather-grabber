@@ -27,6 +27,7 @@ const LastFiveDays = ({ daily }) => {
       <p>Last Five Days</p>
       {weatherObjs.map((weatherObj) => {
         return <WeatherReport
+          key={weatherObj.time}
           time={weatherObj.time}
           temp={weatherObj.temp}
           weather_code={weatherObj.weather_code}
