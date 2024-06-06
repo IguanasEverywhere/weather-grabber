@@ -11,7 +11,6 @@ const LastFiveDays = ({ daily }) => {
       let newObj = {
         time: daily.time[i],
         temp: daily.temperature_2m_max[i],
-        weather_code: daily.weather_code[i]
       }
       weatherObjs.push(newObj);
     }
@@ -25,7 +24,6 @@ const LastFiveDays = ({ daily }) => {
           key={weatherObj.time}
           time={weatherObj.time}
           temp={weatherObj.temp}
-          weather_code={weatherObj.weather_code}
         />
       })}
     </div>
