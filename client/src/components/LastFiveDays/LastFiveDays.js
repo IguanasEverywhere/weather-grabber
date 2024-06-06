@@ -17,11 +17,6 @@ const LastFiveDays = ({ daily }) => {
     }
   }
 
-
-  console.log(weatherObjs)
-
-
-
   return (
     <div className={styles.containerCard}>
       <p>Last Five Days</p>
