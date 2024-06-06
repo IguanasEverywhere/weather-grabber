@@ -4,6 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from flask_cors import CORS
 
+from datetime import datetime
+
+c = datetime.now()
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
@@ -34,11 +38,42 @@ class Weather(db.Model):
             "timestamp": self.timestamp
         }
 
-    @app.route('/api/saved-weather-data', methods=['GET'])
-    def get_saved_weather_data():
+@app.route('/api/saved-weather-data', methods=('GET', 'POST'))
+def saved_weather_data():
+    if request.method == 'GET':
         query_result = Weather.query.limit(5).all()
         last_five_reports = [report.to_dict() for report in query_result]
         return last_five_reports
+    if request.method == 'POST':
+        req_data = request.get_json()
+        temperature = req_data['temperature']
+        weather_code = req_data['weather_code']
+        timestamp = req_data['timestamp']
+        weather_data = Weather(temperature=temperature, weather_code=weather_code, timestamp=c)
+        db.session.add(weather_data)
+        db.session.commit()
+
+        return {"Success": "Data Saved!"}
+
+
+
+    # @app.route('/api/saved-weather-data', methods=('GET', 'POST'))
+    # def saved_weather_data():
+    #     if request.method == 'GET':
+    #         query_result = Weather.query.limit(5).all()
+    #         last_five_reports = [report.to_dict() for report in query_result]
+    #         return last_five_reports
+    #     if request.method == 'POST':
+    #         req_data = request.get_json()
+    #         req_data_obj = {
+    #             "temperature": req_data['temperature'],
+    #             "weather_code": req_data['weather_code'],
+    #             "timestamp": req_data['timestamp']
+    #         }
+    #         db.session.add(req_data_obj)
+    #         db.session.commit()
+
+    #         return req_data_obj
 
 
 if __name__ == '__main__':
