@@ -1,7 +1,9 @@
+import styles from './WeatherCard.module.css';
+
 const WeatherCard = ({time, temp, weatherCode}) => {
 
   return (
-    <div>
+    <div className={styles.containerCard}>
       <p>{time}</p>
       <p>{temp}</p>
       <p>{weatherCode}</p>
