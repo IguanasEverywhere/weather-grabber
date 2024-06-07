@@ -47,10 +47,13 @@ def saved_weather_data():
         return last_five_reports
     if request.method == 'POST':
         req_data = request.get_json()
+
+        timestamp = datetime.strptime(req_data['timestamp'], '%Y-%m-%dT%H:%M')
+
         temperature = req_data['temperature']
         weather_code = req_data['weather_code']
-        timestamp = req_data['timestamp']
-        weather_data = Weather(temperature=temperature, weather_code=weather_code, timestamp=c)
+        weather_data = Weather(temperature=temperature, weather_code=weather_code, timestamp=timestamp)
+
         db.session.add(weather_data)
         db.session.commit()
 
