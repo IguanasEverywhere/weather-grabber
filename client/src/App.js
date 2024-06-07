@@ -5,12 +5,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  // fetch from local db
-  // fetch('http://localhost:5555/api/saved-weather-data')
-  // .then(r => r.json())
-  // .then(data => console.log(data))
 
-  // add more to this later for prev 5 days
 
   const [weatherData, setWeatherData] = useState({
     currentTime: null,
