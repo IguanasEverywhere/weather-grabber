@@ -17,6 +17,12 @@ const CurrentWeather = ({weatherData}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(weatherSnapshot)
+    }).then(r => {
+      if (r.status === 200) {
+        alert("Weather Snapshot Succesfully Saved to DB!")
+      } else {
+        alert(`Save to DB failed. Error code: ${r.status}`)
+      }
     })
   }
 
