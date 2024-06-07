@@ -23,7 +23,6 @@ function App() {
     fetch('https://api.open-meteo.com/v1/gfs?latitude=52.52&longitude=13.41&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago&past_days=4&forecast_days=1')
       .then(r => r.json())
       .then(currentData => {
-        //console.log(currentData)
         setWeatherData({
           currentTime: currentData.current.time,
           currentTemp: currentData.current.temperature_2m,
@@ -32,10 +31,6 @@ function App() {
         })
       })
   }, [])
-
-  // console.log(weatherData)
-
-
 
 
   return (
