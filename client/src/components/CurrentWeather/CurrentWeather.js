@@ -1,6 +1,7 @@
 import styles from './CurrentWeather.module.css';
+import WeatherCard from '../WeatherCard/WeatherCard';
 
-const CurrentWeather = ({weatherData}) => {
+const CurrentWeather = ({ weatherData }) => {
 
   const handleSaveSnapshotClick = () => {
 
@@ -29,9 +30,12 @@ const CurrentWeather = ({weatherData}) => {
   return (
     <div className={styles.containerCard}>
       <p>Current Weather</p>
-      <p>{weatherData.currentTime}</p>
-      <p>{weatherData.currentTemp}</p>
-      <p>{weatherData.currentWeatherCode}</p>
+      <WeatherCard
+        time={weatherData.currentTime}
+        temp={weatherData.currentTemp}
+        weatherCode={weatherData.currentWeatherCode}
+      />
+
       <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
     </div>
   )

@@ -17,6 +17,8 @@ const SavedWeatherReports = () => {
     <div className={styles.containerCard}>
       <p>SavedWeatherReports</p>
       <button onClick={handleRetrieveClick}>Retrieve Saved Reports</button>
+      {savedWeather.length === 0 ? null :
+        <p>Retreiveed</p>}
     </div>
   )
 }
