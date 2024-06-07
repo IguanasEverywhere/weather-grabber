@@ -1,5 +1,6 @@
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import LastFiveDays from './components/LastFiveDays/LastFiveDays';
+import SavedWeatherReports from './components/SavedWeatherReports/SavedWeatherReports';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         Weather grabber
         <CurrentWeather weatherData={weatherData} />
         <LastFiveDays daily={weatherData.daily} />
+        <SavedWeatherReports />
       </div>
     </div>
   );
