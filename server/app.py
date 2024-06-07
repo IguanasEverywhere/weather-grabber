@@ -42,7 +42,7 @@ class Weather(db.Model):
 @app.route('/api/saved-weather-data', methods=('GET', 'POST'))
 def saved_weather_data():
     if request.method == 'GET':
-        query_result = Weather.query.limit(5).all()
+        query_result = Weather.query.order_by(Weather.id.desc()).limit(5).all()
         last_five_reports = [report.to_dict() for report in query_result]
         return last_five_reports
     if request.method == 'POST':
