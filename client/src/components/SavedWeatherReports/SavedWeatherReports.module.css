@@ -5,16 +5,11 @@
   padding: 10px;
 }
 
-.containerCard > h3, p {
+.containerTop {
   text-align: center;
 }
 
-.cardBody {
-  border: 2px solid blue;
-  display: flex;
-  justify-content: space-between;
-}
-
 .buttonsArea {
-  border: 2px solid red;
+  display: flex;
+  justify-content: center;
 }

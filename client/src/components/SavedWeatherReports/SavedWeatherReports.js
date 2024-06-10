@@ -14,11 +14,14 @@ const SavedWeatherReports = () => {
 
   return (
     <div className={styles.containerCard}>
-      <h3>Saved Weather Reports</h3>
-      <p>Click Button to Retrieve Saved Weather Reports!</p>
-      <div className={styles.cardBody}>
-
-
+      <div className={styles.containerTop}>
+        <h3>Saved Weather Reports</h3>
+        <p>Click Button to Retrieve Saved Weather Reports!</p>
+      </div>
+      <div className={styles.buttonsArea}>
+        <button onClick={handleRetrieveClick}>Retrieve Saved Reports</button>
+      </div>
+      <div className={styles.reportCardsArea}>
         {savedWeather.length === 0 ? null :
           savedWeather.map((report) => <WeatherCard
             key={report.id}
@@ -26,10 +29,8 @@ const SavedWeatherReports = () => {
             temp={report.temperature}
             weatherCode={report.weather_code}
           />)}
-        <div className={styles.buttonsArea}>
-          <button onClick={handleRetrieveClick}>Retrieve Saved Reports</button>
-        </div>
       </div>
+
     </div>
   )
 }
