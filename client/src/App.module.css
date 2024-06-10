@@ -1,0 +1,12 @@
+.titleContainer {
+  text-align: center;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topContainer > * {
+  width: 100%;
+}

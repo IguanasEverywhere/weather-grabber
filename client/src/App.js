@@ -2,6 +2,7 @@ import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import LastFiveDays from './components/LastFiveDays/LastFiveDays';
 import SavedWeatherReports from './components/SavedWeatherReports/SavedWeatherReports';
 import { useEffect, useState } from 'react';
+import styles from './App.module.css';
 
 function App() {
 
@@ -45,16 +46,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className="main-container">
-        Weather grabber
+      <div className={styles.titleContainer}>
+        <h1>Weather Grabber</h1>
+      </div>
+
+      <div className={styles.topContainer}>
         <CurrentWeather
           weatherData={weatherData}
           handleLiveClick={handleLiveClick}
           liveUpdate={liveUpdate}
         />
-        <LastFiveDays daily={weatherData.daily} />
         <SavedWeatherReports />
-        {/* <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button> */}
+      </div>
+      <div className={styles.bottomContainer}>
+        <LastFiveDays daily={weatherData.daily} />
       </div>
     </div>
   );
