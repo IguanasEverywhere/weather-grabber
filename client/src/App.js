@@ -45,7 +45,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className={styles.app}>
       <div className={styles.titleContainer}>
         <h1>Weather Grabber</h1>
       </div>

@@ -3,6 +3,7 @@
   border-radius: 15px;
   background-color: blanchedalmond;
   padding: 10px;
+  background-image: linear-gradient(to bottom right, skyblue, white);
 }
 
 .containerCard > h3 {
