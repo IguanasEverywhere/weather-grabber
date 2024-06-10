@@ -12,8 +12,6 @@ const SavedWeatherReports = () => {
       .then(reports => setSavedWeather(reports))
   }
 
-  console.log(savedWeather)
-
   return (
     <div className={styles.containerCard}>
       <p>SavedWeatherReports</p>

@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-
-
   const [weatherData, setWeatherData] = useState({
     currentTime: null,
     currentTemp: null,
@@ -14,9 +12,18 @@ function App() {
     daily: {}
   });
 
+  const [liveUpdate, setLiveUpdate] = useState(true);
+
   useEffect(() => {
     getCurrentWeather();
-  }, [])
+    console.log('liveupdateVal', liveUpdate)
+    if (liveUpdate === true) {
+      let update = setInterval(() => {
+        getCurrentWeather();
+      }, 60000)
+      return () => clearInterval(update)
+    }
+  }, [liveUpdate])
 
   const getCurrentWeather = () => {
     console.log("fetching...")
@@ -32,6 +39,10 @@ function App() {
       })
   }
 
+  const handleLiveClick = () => {
+    setLiveUpdate((prev) => !prev)
+  }
+
 
   return (
     <div className="App">
@@ -40,6 +51,7 @@ function App() {
         <CurrentWeather weatherData={weatherData} />
         <LastFiveDays daily={weatherData.daily} />
         <SavedWeatherReports />
+        <button onClick={handleLiveClick}>Live Update</button>
       </div>
     </div>
   );
