@@ -56,10 +56,10 @@ function App() {
           handleLiveClick={handleLiveClick}
           liveUpdate={liveUpdate}
         />
-        <SavedWeatherReports />
+        <LastFiveDays daily={weatherData.daily} />
       </div>
       <div className={styles.bottomContainer}>
-        <LastFiveDays daily={weatherData.daily} />
+        <SavedWeatherReports />
       </div>
     </div>
   );
