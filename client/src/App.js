@@ -16,11 +16,10 @@ function App() {
 
   useEffect(() => {
     getCurrentWeather();
-    console.log('liveupdateVal', liveUpdate)
     if (liveUpdate === true) {
       let update = setInterval(() => {
         getCurrentWeather();
-      }, 6000)
+      }, 60000)
       return () => clearInterval(update)
     }
   }, [liveUpdate])
