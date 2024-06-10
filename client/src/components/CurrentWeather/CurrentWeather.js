@@ -5,7 +5,6 @@ const CurrentWeather = ({ weatherData, handleLiveClick, liveUpdate }) => {
 
   const handleSaveSnapshotClick = () => {
 
-    // JSON.stringify data, then post it to back end to be saved
     let weatherSnapshot = {
       "temperature": weatherData.currentTemp,
       "timestamp": weatherData.currentTime,
@@ -29,15 +28,18 @@ const CurrentWeather = ({ weatherData, handleLiveClick, liveUpdate }) => {
 
   return (
     <div className={styles.containerCard}>
-      <p>Current Weather</p>
-      <WeatherCard
-        time={weatherData.currentTime}
-        temp={weatherData.currentTemp}
-        weatherCode={weatherData.currentWeatherCode}
-      />
-
-      <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
-      <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button>
+      <h3>Current Weather</h3>
+      <div className={styles.cardBody}>
+        <WeatherCard
+          time={weatherData.currentTime}
+          temp={weatherData.currentTemp}
+          weatherCode={weatherData.currentWeatherCode}
+        />
+      </div>
+      <div className={styles.buttonsArea}>
+        <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
+        <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button>
+      </div>
     </div>
   )
 }

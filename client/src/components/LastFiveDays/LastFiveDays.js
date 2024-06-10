@@ -18,7 +18,7 @@ const LastFiveDays = ({ daily }) => {
 
   return (
     <div className={styles.containerCard}>
-      <p>Last Five Days</p>
+      <h3>Last Five Days</h3>
       {weatherObjs.map((weatherObj) => {
         return <WeatherReport
           key={weatherObj.time}

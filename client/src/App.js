@@ -2,6 +2,7 @@ import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import LastFiveDays from './components/LastFiveDays/LastFiveDays';
 import SavedWeatherReports from './components/SavedWeatherReports/SavedWeatherReports';
 import { useEffect, useState } from 'react';
+import styles from './App.module.css';
 
 function App() {
 
@@ -16,11 +17,10 @@ function App() {
 
   useEffect(() => {
     getCurrentWeather();
-    console.log('liveupdateVal', liveUpdate)
     if (liveUpdate === true) {
       let update = setInterval(() => {
         getCurrentWeather();
-      }, 6000)
+      }, 60000)
       return () => clearInterval(update)
     }
   }, [liveUpdate])
@@ -45,17 +45,21 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="main-container">
-        Weather grabber
+    <div className={styles.app}>
+      <div className={styles.titleContainer}>
+        <h1>Weather Grabber</h1>
+      </div>
+
+      <div className={styles.topContainer}>
         <CurrentWeather
           weatherData={weatherData}
           handleLiveClick={handleLiveClick}
           liveUpdate={liveUpdate}
         />
         <LastFiveDays daily={weatherData.daily} />
+      </div>
+      <div className={styles.bottomContainer}>
         <SavedWeatherReports />
-        {/* <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button> */}
       </div>
     </div>
   );
