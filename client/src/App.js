@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-
-
   const [weatherData, setWeatherData] = useState({
     currentTime: null,
     currentTemp: null,
@@ -14,7 +12,20 @@ function App() {
     daily: {}
   });
 
+  const [liveUpdate, setLiveUpdate] = useState(true);
+
   useEffect(() => {
+    getCurrentWeather();
+    console.log('liveupdateVal', liveUpdate)
+    if (liveUpdate === true) {
+      let update = setInterval(() => {
+        getCurrentWeather();
+      }, 6000)
+      return () => clearInterval(update)
+    }
+  }, [liveUpdate])
+
+  const getCurrentWeather = () => {
     console.log("fetching...")
     fetch('https://api.open-meteo.com/v1/gfs?latitude=52.52&longitude=13.41&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago&past_days=4&forecast_days=1')
       .then(r => r.json())
@@ -26,16 +37,25 @@ function App() {
           daily: currentData.daily
         })
       })
-  }, [])
+  }
+
+  const handleLiveClick = () => {
+    setLiveUpdate((prev) => !prev)
+  }
 
 
   return (
     <div className="App">
       <div className="main-container">
         Weather grabber
-        <CurrentWeather weatherData={weatherData} />
+        <CurrentWeather
+          weatherData={weatherData}
+          handleLiveClick={handleLiveClick}
+          liveUpdate={liveUpdate}
+        />
         <LastFiveDays daily={weatherData.daily} />
         <SavedWeatherReports />
+        {/* <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button> */}
       </div>
     </div>
   );

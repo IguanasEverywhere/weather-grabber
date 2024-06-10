@@ -1,7 +1,7 @@
 import styles from './CurrentWeather.module.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
 
-const CurrentWeather = ({ weatherData }) => {
+const CurrentWeather = ({ weatherData, handleLiveClick, liveUpdate }) => {
 
   const handleSaveSnapshotClick = () => {
 
@@ -37,6 +37,7 @@ const CurrentWeather = ({ weatherData }) => {
       />
 
       <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
+      <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button>
     </div>
   )
 }
