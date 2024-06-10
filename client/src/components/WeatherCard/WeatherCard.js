@@ -19,7 +19,6 @@ const WeatherCard = ({time, temp, weatherCode}) => {
       <p>{timeObj.toLocaleString()}</p>
       <p>{temp}° F</p>
       <p>{weatherCode}</p>
-      {/* You'll need to await this */}
       <img src={weatherCodeImg} alt="weather-code-icon"></img>
     </div>
   )
