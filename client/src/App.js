@@ -20,7 +20,7 @@ function App() {
     if (liveUpdate === true) {
       let update = setInterval(() => {
         getCurrentWeather();
-      }, 60000)
+      }, 6000)
       return () => clearInterval(update)
     }
   }, [liveUpdate])
@@ -48,10 +48,14 @@ function App() {
     <div className="App">
       <div className="main-container">
         Weather grabber
-        <CurrentWeather weatherData={weatherData} />
+        <CurrentWeather
+          weatherData={weatherData}
+          handleLiveClick={handleLiveClick}
+          liveUpdate={liveUpdate}
+        />
         <LastFiveDays daily={weatherData.daily} />
         <SavedWeatherReports />
-        <button onClick={handleLiveClick}>Live Update</button>
+        {/* <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button> */}
       </div>
     </div>
   );
