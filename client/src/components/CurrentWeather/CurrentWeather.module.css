@@ -2,4 +2,19 @@
   border: 2px solid black;
   border-radius: 15px;
   background-color: blanchedalmond;
+  padding: 10px;
+}
+
+.containerCard > h3 {
+  text-align: center;
+}
+
+.cardBody {
+  border: 2px solid blue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonsArea {
+  border: 2px solid red;
 }
