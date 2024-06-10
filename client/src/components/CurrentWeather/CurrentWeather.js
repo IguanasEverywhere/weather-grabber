@@ -35,11 +35,10 @@ const CurrentWeather = ({ weatherData, handleLiveClick, liveUpdate }) => {
           temp={weatherData.currentTemp}
           weatherCode={weatherData.currentWeatherCode}
         />
-
-        <div className={styles.buttonsArea}>
-          <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
-          <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button>
-        </div>
+      </div>
+      <div className={styles.buttonsArea}>
+        <button onClick={handleSaveSnapshotClick}>Save Snapshot to DB</button>
+        <button onClick={handleLiveClick}>Turn Live Update {liveUpdate === true ? "OFF" : "ON"}</button>
       </div>
     </div>
   )
