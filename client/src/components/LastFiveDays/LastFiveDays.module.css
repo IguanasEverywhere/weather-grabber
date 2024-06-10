@@ -8,3 +8,7 @@
 .containerCard > h3 {
   text-align: center;
 }
+
+.graph {
+  border: 1px solid black;
+}
