@@ -3,7 +3,6 @@ import WeatherReport from '../WeatherReport/WeatherReport';
 import Bar from '../Bar/Bar';
 
 const LastFiveDays = ({ daily }) => {
-  console.log(daily)
 
   let weatherObjs = [];
 
