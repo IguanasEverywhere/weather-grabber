@@ -1,10 +1,14 @@
 .containerCard {
   border: 2px solid black;
   border-radius: 15px;
-  background-color: aqua;
+  background-image: linear-gradient(skyblue, white);
   padding: 10px;
 }
 
 .containerCard > h3 {
   text-align: center;
+}
+
+.graph {
+  border: 1px solid black;
 }

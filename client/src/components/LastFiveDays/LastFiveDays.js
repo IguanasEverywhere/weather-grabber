@@ -1,5 +1,6 @@
 import styles from './LastFiveDays.module.css';
 import WeatherReport from '../WeatherReport/WeatherReport';
+import Bar from '../Bar/Bar';
 
 const LastFiveDays = ({ daily }) => {
 
@@ -18,14 +19,28 @@ const LastFiveDays = ({ daily }) => {
 
   return (
     <div className={styles.containerCard}>
-      <h3>Last Five Days</h3>
-      {weatherObjs.map((weatherObj) => {
+      <h3>Temps of the Last Five Days</h3>
+
+      <div className={styles.graph}>
+        {weatherObjs.map((weatherObj) => {
+          return <Bar
+            key={weatherObj.time}
+            temp={weatherObj.temp}
+            time={weatherObj.time}
+          />
+        })}
+
+      </div>
+
+
+
+      {/* {weatherObjs.map((weatherObj) => {
         return <WeatherReport
           key={weatherObj.time}
           time={weatherObj.time}
           temp={weatherObj.temp}
         />
-      })}
+      })} */}
     </div>
   )
 }

@@ -31,7 +31,7 @@ function App() {
       .then(r => r.json())
       .then(currentData => {
         setWeatherData({
-          currentTime: currentData.current.time,
+          currentTime: new Date(currentData.current.time),
           currentTemp: currentData.current.temperature_2m,
           currentWeatherCode: currentData.current.weather_code,
           daily: currentData.daily
