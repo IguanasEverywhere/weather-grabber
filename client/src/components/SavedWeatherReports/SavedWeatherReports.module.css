@@ -14,6 +14,10 @@
   justify-content: center;
 }
 
+.buttonsArea button {
+  margin-bottom: 15px;
+}
+
 .reportCardsArea {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -23,5 +27,14 @@
 @media(max-width: 600px) {
   .reportCardsArea {
     grid-template-columns: 1fr;
+  }
+  .buttonsArea {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+  }
+  .buttonsArea * {
+    margin: 15px;
+    width: 75%;
   }
 }
