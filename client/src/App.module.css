@@ -7,6 +7,7 @@
   justify-content: space-between;
 }
 
+
 .topContainer > * {
   width: 100%;
   margin: 10px;
@@ -14,4 +15,32 @@
 
 .bottomContainer {
   margin: 10px;
+}
+
+button {
+  background-color: #ffbc3b;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  color: white;
+  border: 1px solid white;
+}
+
+@media(max-width: 600px) {
+  .topContainer {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  .bottomContainer {
+    margin: 0;
+  }
+  button {
+    font-size: 1.25rem;
+    padding: 5px;
+  }
 }
