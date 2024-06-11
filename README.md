@@ -31,10 +31,11 @@ Some trade-offs or considerations include:
 * Other databases, like Postgres, are common for deployed applications. The decision to use SQLite was made as Weather Grabber is only intended be a local development showcase, and will not likely be deployed or put in front of a large, live userbase.
 * Some fetch requests (API calls, db retrievals) would do well to have more try/catch blocks in place to bolster the sturdiness of the app.
 * More information could be provided to the user (loading wheels, countdown timers to next update, etc).
+* Bar Graph could be built using a stronger external library, rather than the simple (and brittle) version here.
 * Further ideas and feedback submissions are welcome: scottschwab86@gmail.com
 
 Weather codes provided by stellasphere
 https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
 
 
-Developed by Scott Schwab, 2023
+Developed by Scott Schwab, 2024
