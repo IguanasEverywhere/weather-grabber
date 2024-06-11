@@ -48,7 +48,7 @@ def saved_weather_data():
     if request.method == 'POST':
         req_data = request.get_json()
 
-        timestamp = datetime.strptime(req_data['timestamp'], '%Y-%m-%dT%H:%M')
+        timestamp = datetime.strptime(req_data['timestamp'], '%Y-%m-%dT%H:%M:%S.000Z')
 
         temperature = req_data['temperature']
         weather_code = req_data['weather_code']

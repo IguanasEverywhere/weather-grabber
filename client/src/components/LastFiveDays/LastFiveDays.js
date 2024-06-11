@@ -19,10 +19,9 @@ const LastFiveDays = ({ daily }) => {
 
   return (
     <div className={styles.containerCard}>
-      <h3>Last Five Days</h3>
+      <h3>Temps of the Last Five Days</h3>
 
       <div className={styles.graph}>
-        graph
         {weatherObjs.map((weatherObj) => {
           return <Bar
             key={weatherObj.time}
